@@ -1,5 +1,128 @@
+/* Local Library — layout and polish (Bootstrap 4 compatible) */
+
+:root {
+    --ll-bg: #f4f6f9;
+    --ll-sidebar: #1a2332;
+    --ll-sidebar-muted: rgba(255, 255, 255, 0.55);
+    --ll-accent: #3d7ea6;
+    --ll-accent-hover: #2d5f7d;
+    --ll-card-radius: 10px;
+}
+
+.site-body {
+    min-height: 100vh;
+    background: var(--ll-bg);
+    color: #1e293b;
+}
+
+.site-row {
+    min-height: 100vh;
+}
+
+.sidebar-col {
+    background: linear-gradient(180deg, var(--ll-sidebar) 0%, #121a24 100%);
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar-nav-wrap {
+    position: sticky;
+    top: 0;
+    padding: 1.5rem 1rem 2rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-brand {
+    letter-spacing: 0.08em;
+    color: var(--ll-sidebar-muted);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
 .sidebar-nav {
-    margin-top: 20px;
+    margin-top: 0;
     padding: 0;
     list-style: none;
+}
+
+.sidebar-nav li {
+    margin-bottom: 0.35rem;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 0.45rem 0.65rem;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.88);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a:focus {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-col {
+    background: var(--ll-bg);
+}
+
+.main-content {
+    max-width: 960px;
+}
+
+.page-title {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 2px solid rgba(61, 126, 166, 0.35);
+    color: #0f172a;
+}
+
+.text-link {
+    color: var(--ll-accent);
+    font-weight: 500;
+}
+
+.text-link:hover {
+    color: var(--ll-accent-hover);
+}
+
+.table-card {
+    border: none;
+    border-radius: var(--ll-card-radius);
+    overflow: hidden;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.table-card .table thead th {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    border-top: none;
+    font-weight: 600;
+}
+
+.table-card .table tbody td {
+    vertical-align: middle;
+}
+
+.table-card .table tbody tr:hover {
+    background-color: rgba(61, 126, 166, 0.06);
+}
+
+.pagination .page-link {
+    color: var(--ll-accent);
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #64748b;
+    background: transparent;
+    border-color: #dee2e6;
 }
