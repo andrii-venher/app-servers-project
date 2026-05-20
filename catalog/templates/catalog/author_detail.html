@@ -5,7 +5,16 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="page-title">{{ author }}</h1>
+  <h1 class="page-title">
+    {{ author }}
+    {% if perms.catalog.can_mark_returned %}
+      <small class="ms-2">
+        <a href="{% url 'author-update' author.pk %}" class="text-link">Update</a>
+        ·
+        <a href="{% url 'author-delete' author.pk %}" class="text-link text-danger">Delete</a>
+      </small>
+    {% endif %}
+  </h1>
   <p>{{ author.date_of_birth }} — {% if author.date_of_death %}{{ author.date_of_death }}{% endif %}</p>
 
   <div style="margin-left:20px;margin-top:20px">

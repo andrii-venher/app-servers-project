@@ -14,6 +14,7 @@
               <th scope="col">Title</th>
               <th scope="col">Borrower</th>
               <th scope="col">Due back</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -24,6 +25,11 @@
                 </td>
                 <td>{% if bookinst.borrower %}{{ bookinst.borrower }}{% else %}<em class="text-muted">—</em>{% endif %}</td>
                 <td>{{ bookinst.due_back }}</td>
+                <td>
+                  {% if perms.catalog.can_mark_returned %}
+                    <a href="{% url 'renew-book-librarian' bookinst.id %}" class="text-link">Renew</a>
+                  {% endif %}
+                </td>
               </tr>
             {% endfor %}
           </tbody>

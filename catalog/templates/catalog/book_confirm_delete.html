@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Delete book — Local Library</title>{% endblock %}
+
+{% block content %}
+  <h1 class="page-title">Delete book</h1>
+  <p>Are you sure you want to delete the book <strong>{{ book }}</strong>?</p>
+
+  <form action="" method="post" class="d-inline">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+    <a href="{% url 'book-detail' book.pk %}" class="btn btn-link">Cancel</a>
+  </form>
+{% endblock %}

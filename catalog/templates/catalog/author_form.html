@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>{% if form.instance.pk %}Edit{% else %}New{% endif %} author — Local Library</title>{% endblock %}
+
+{% block content %}
+  <h1 class="page-title">{% if form.instance.pk %}Edit author{% else %}New author{% endif %}</h1>
+
+  <form action="" method="post" class="card card-body shadow-sm" style="max-width: 36rem;">
+    {% csrf_token %}
+    <table class="mb-3">{{ form.as_table }}</table>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
