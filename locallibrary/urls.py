@@ -8,6 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Forward all 'catalog/' URLs to the app's URL configuration
     path('catalog/', include('catalog.urls')),
+    # Django site authentication URLs (login, logout, password management)
+    path('accounts/', include('django.contrib.auth.urls')),
     # Redirect the root URL to the catalog app
     path('', RedirectView.as_view(url='catalog/', permanent=True)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

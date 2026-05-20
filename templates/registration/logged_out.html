@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Logged out — Local Library</title>{% endblock %}
+
+{% block content %}
+  <h1 class="page-title">Logged out</h1>
+  <p class="lead text-muted">You have been logged out.</p>
+  <p><a href="{% url 'login' %}" class="text-link">Click here to log in again.</a></p>
+{% endblock %}
