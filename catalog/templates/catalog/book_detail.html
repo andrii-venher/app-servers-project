@@ -38,6 +38,13 @@
         <p><strong>Due to be returned:</strong> {{ copy.due_back }}</p>
       {% endif %}
       <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
+      <p>
+        <strong>Comments:</strong>
+        {% if copy.comments %}{{ copy.comments }}{% else %}<em class="text-muted">—</em>{% endif %}
+        {% if perms.catalog.can_mark_returned %}
+          · <a href="{% url 'bookinstance-comments' copy.id %}" class="text-link">Edit comments</a>
+        {% endif %}
+      </p>
     {% empty %}
       <p>There are no copies of this book in the library.</p>
     {% endfor %}

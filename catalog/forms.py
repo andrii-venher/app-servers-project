@@ -27,6 +27,20 @@ class RenewBookForm(forms.Form):
         return data
 
 
+class BookInstanceCommentsForm(ModelForm):
+    def clean_comments(self):
+        data = self.cleaned_data['comments']
+        if len(data) >= 200:
+            raise ValidationError(_('Comment must be less than 200 characters.'))
+        return data
+
+    class Meta:
+        model = BookInstance
+        fields = ['comments']
+        labels = {'comments': _('Comments')}
+        help_texts = {'comments': _('Comment must be under 200 characters.')}
+
+
 class RenewBookModelForm(ModelForm):
     """ModelForm variant over BookInstance.due_back. Functionally equivalent to
     RenewBookForm; the view can be switched to use this instead by swapping the

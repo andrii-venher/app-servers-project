@@ -8,7 +8,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from .forms import RenewBookForm
+from .forms import BookInstanceCommentsForm, RenewBookForm
 from .models import Author, Book, BookInstance
 
 
@@ -96,6 +96,23 @@ def renew_book_librarian(request, pk):
 
     context = {'form': form, 'book_instance': book_instance}
     return render(request, 'catalog/book_renew_librarian.html', context)
+
+
+@login_required
+@permission_required('catalog.can_mark_returned', raise_exception=True)
+def edit_bookinstance_comments(request, pk):
+    book_instance = get_object_or_404(BookInstance, pk=pk)
+
+    if request.method == 'POST':
+        form = BookInstanceCommentsForm(request.POST, instance=book_instance)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('book-detail', args=[book_instance.book.pk]))
+    else:
+        form = BookInstanceCommentsForm(instance=book_instance)
+
+    context = {'form': form, 'book_instance': book_instance}
+    return render(request, 'catalog/bookinstance_comments_form.html', context)
 
 
 class AuthorCreate(CreateView):

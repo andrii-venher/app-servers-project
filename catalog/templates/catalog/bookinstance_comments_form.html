@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Edit comments: {{ book_instance.book.title }} — Local Library</title>{% endblock %}
+
+{% block content %}
+  <h1 class="page-title">Edit comments: {{ book_instance.book.title }}</h1>
+  <p class="text-muted"><strong>Copy id:</strong> {{ book_instance.id }}</p>
+
+  <form action="" method="post" class="card card-body shadow-sm" style="max-width: 32rem;">
+    {% csrf_token %}
+    <table class="mb-3">{{ form.as_table }}</table>
+    <div>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a href="{% url 'book-detail' book_instance.book.pk %}" class="btn btn-link">Cancel</a>
+    </div>
+  </form>
+{% endblock %}

@@ -94,6 +94,7 @@ class BookInstance(models.Model):
         default='m',
         help_text='Book availability',
     )
+    comments = models.TextField(blank=True, help_text='Comment must be <200 characters.')
 
     class Meta:
         ordering = ['due_back']
